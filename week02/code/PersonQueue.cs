@@ -13,7 +13,7 @@ public class PersonQueue
     /// <param name="person">The person to add</param>
     public void Enqueue(Person person)
     {
-        _queue.Insert(0, person);
+        _queue.Add(person); ///_queue.Insert(0, person);  // Add to the front of the queue Changed the LIFO to FIFO
     }
 
     public Person Dequeue()
