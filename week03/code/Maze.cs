@@ -16,52 +16,70 @@
 /// </summary>
 public class Maze
 {
-    private readonly Dictionary<ValueTuple<int, int>, bool[]> _mazeMap;
+    private readonly Dictionary<(int, int), bool[]> _mazeMap;
     private int _currX = 1;
     private int _currY = 1;
 
-    public Maze(Dictionary<ValueTuple<int, int>, bool[]> mazeMap)
+    public Maze(Dictionary<(int, int), bool[]> mazeMap)
     {
         _mazeMap = mazeMap;
     }
 
-    // TODO Problem 4 - ADD YOUR CODE HERE
     /// <summary>
-    /// Check to see if you can move left.  If you can, then move.  If you
-    /// can't move, throw an InvalidOperationException with the message "Can't go that way!".
+    /// Moves left if allowed; otherwise, throws an exception.
     /// </summary>
     public void MoveLeft()
     {
-        // FILL IN CODE
+        // Retrieve the valid movements for the current cell.
+        bool[] directions = _mazeMap[(_currX, _currY)];
+        // Index 0 corresponds to left.
+        if (!directions[0])
+            throw new InvalidOperationException("Can't go that way!");
+        _currX--;
     }
 
     /// <summary>
-    /// Check to see if you can move right.  If you can, then move.  If you
-    /// can't move, throw an InvalidOperationException with the message "Can't go that way!".
+    /// Moves right if allowed; otherwise, throws an exception.
     /// </summary>
     public void MoveRight()
     {
-        // FILL IN CODE
+        // Retrieve the valid movements for the current cell.
+        bool[] directions = _mazeMap[(_currX, _currY)];
+        // Index 1 corresponds to right.
+        if (!directions[1])
+            throw new InvalidOperationException("Can't go that way!");
+        _currX++;
     }
 
     /// <summary>
-    /// Check to see if you can move up.  If you can, then move.  If you
-    /// can't move, throw an InvalidOperationException with the message "Can't go that way!".
+    /// Moves up if allowed; otherwise, throws an exception.
     /// </summary>
     public void MoveUp()
     {
-        // FILL IN CODE
+        // Retrieve the valid movements for the current cell.
+        bool[] directions = _mazeMap[(_currX, _currY)];
+        // Index 2 corresponds to up.
+        if (!directions[2])
+            throw new InvalidOperationException("Can't go that way!");
+        _currY--;
     }
 
     /// <summary>
-    /// Check to see if you can move down.  If you can, then move.  If you
-    /// can't move, throw an InvalidOperationException with the message "Can't go that way!".
+    /// Moves down if allowed; otherwise, throws an exception.
     /// </summary>
     public void MoveDown()
     {
-        // FILL IN CODE
+        // Retrieve the valid movements for the current cell.
+        bool[] directions = _mazeMap[(_currX, _currY)];
+        // Index 3 corresponds to down.
+        if (!directions[3])
+            throw new InvalidOperationException("Can't go that way!");
+        _currY++;
     }
 
+    /// <summary>
+    /// Returns the current location in the maze.
+    /// </summary>
     public string GetStatus()
     {
         return $"Current location (x={_currX}, y={_currY})";
